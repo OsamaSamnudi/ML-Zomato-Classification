@@ -37,7 +37,6 @@ from sklearn.compose import ColumnTransformer
 
 # Model Deployment Package
 import pickle
-import distutils.core
 
 # Deployment Package
 import streamlit as st
