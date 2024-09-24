@@ -6,7 +6,7 @@ import numpy as np
 import plotly.express as px
 import matplotlib.pyplot as plt
 import seaborn as sns
-import distutils.core
+
 
 # Preprocessing Package
 from sklearn.model_selection import train_test_split, GridSearchCV
