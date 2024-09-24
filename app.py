@@ -6,13 +6,8 @@ import numpy as np
 import plotly.express as px
 import matplotlib.pyplot as plt
 import seaborn as sns
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
 
 pd.options.display.float_format = '{:,.2f}'.format
-import warnings
-warnings.filterwarnings('ignore')
-
 
 # Preprocessing Package
 from sklearn.model_selection import train_test_split, GridSearchCV
@@ -37,9 +32,6 @@ from sklearn.compose import ColumnTransformer
 # Model Deployment Package
 import pickle
 import joblib
-
-# Deployment Package
-import streamlit as st
 
 # Read Data
 
@@ -190,9 +182,9 @@ with tab1:
 
             if st.button('Predict'):
                 Processor_Model = pickle.load(open('Processor.pkl' , 'rb'))
-                RF_model = pickle.load(open('xgb_clf_Model.pkl' , 'rb'))
-                N_test = Processor_Model.transform(N_data)
-                Test_Pred = RF_model.predict(N_test)
+                xgb_clf_Model = pickle.load(open('xgb_clf_Model.pkl' , 'rb'))
+                N_test = xgb_clf_Model.transform(N_data)
+                Test_Pred = xgb_clf_Model.predict(N_test)
                 if Test_Pred == 1:
                     Result = 'Good'
                     st.balloons()
