@@ -19,11 +19,7 @@ from sklearn.model_selection import cross_val_score
 
 from sklearn.metrics import classification_report, confusion_matrix, ConfusionMatrixDisplay, f1_score, accuracy_score, precision_score, recall_score
 from sklearn.compose import ColumnTransformer
-from sklearn.svm import SVC
-from sklearn.svm import LinearSVC
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
+import xgboost as xgb
 
 # Pipeline Package
 from sklearn.pipeline import Pipeline
