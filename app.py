@@ -6,6 +6,12 @@ import numpy as np
 import plotly.express as px
 import matplotlib.pyplot as plt
 import seaborn as sns
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+
+pd.options.display.float_format = '{:,.2f}'.format
+import warnings
+warnings.filterwarnings('ignore')
 
 
 # Preprocessing Package
@@ -15,10 +21,15 @@ from category_encoders import BinaryEncoder
 from sklearn.impute import SimpleImputer
 from sklearn.metrics import mean_squared_error , r2_score
 from sklearn.model_selection import cross_val_score
+import xgboost as xgb
 
 from sklearn.metrics import classification_report, confusion_matrix, ConfusionMatrixDisplay, f1_score, accuracy_score, precision_score, recall_score
 from sklearn.compose import ColumnTransformer
-import xgboost as xgb
+from sklearn.svm import SVC
+from sklearn.svm import LinearSVC
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
 
 # Pipeline Package
 from sklearn.pipeline import Pipeline
@@ -26,7 +37,10 @@ from sklearn.compose import ColumnTransformer
 
 # Model Deployment Package
 import pickle
-# import joblib
+import distutils.core
+
+# Deployment Package
+import streamlit as st
 
 # Read Data
 
@@ -177,9 +191,9 @@ with tab1:
 
             if st.button('Predict'):
                 Processor_Model = pickle.load(open('Processor.pkl' , 'rb'))
-                xgb_clf_Model = pickle.load(open('xgb_clf_Model.pkl' , 'rb'))
-                N_test = xgb_clf_Model.transform(N_data)
-                Test_Pred = xgb_clf_Model.predict(N_test)
+                xgb_clf_model = pickle.load(open('xgb_clf_Model.pkl' , 'rb'))
+                N_test = Processor_Model.transform(N_data)
+                Test_Pred = xgb_clf_model.predict(N_test)
                 if Test_Pred == 1:
                     Result = 'Good'
                     st.balloons()
