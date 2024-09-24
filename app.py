@@ -196,7 +196,7 @@ with tab1:
                 if Test_Pred == 1:
                     Result = 'Good'
                     st.balloons()
-                    st.markdown(f"""<span style="font-size:larger; color:green">**Patient Result : {Result}**</span>""" , unsafe_allow_html=True)
+                    st.markdown(f"""<span style="font-size:larger; color:green">** Result : {Result}**</span>""" , unsafe_allow_html=True)
                 else:
                     Result = 'Not Good'
-                    st.markdown(f"""<span style="font-size:larger; color:red">**Patient Result : {Result}**</span>""" , unsafe_allow_html=True)
+                    st.markdown(f"""<span style="font-size:larger; color:red">** Result : {Result}**</span>""" , unsafe_allow_html=True)
